@@ -1,0 +1,284 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Modelo de Dados</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #111827;
+        }
+
+        header {
+            height: 70px;
+            background: #111827;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 70px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ef4444;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 35px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: white;
+            padding: 70px;
+        }
+
+        .hero h1 {
+            font-size: 54px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #ef4444;
+        }
+
+        .line {
+            width: 55px;
+            height: 4px;
+            background: #ef4444;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 850px;
+        }
+
+        .content {
+            padding: 50px 70px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .card h2 {
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .small-line {
+            width: 45px;
+            height: 3px;
+            background: #ef4444;
+            margin: 15px 0 25px;
+        }
+
+        .entity {
+            border-left: 4px solid #ef4444;
+            padding-left: 18px;
+            margin-bottom: 25px;
+        }
+
+        .entity h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .entity ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        li::marker {
+            color: #ef4444;
+        }
+
+        .diagram {
+            grid-column: 1 / 3;
+        }
+
+        .diagram-box {
+            margin-top: 20px;
+            border: 2px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            background: #f9fafb;
+        }
+
+        .diagram-box img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+        }
+
+        .placeholder {
+            color: #6b7280;
+            font-size: 18px;
+            padding: 60px 20px;
+        }
+
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 25px;
+        }
+
+        @media (max-width: 900px) {
+            .content {
+                grid-template-columns: 1fr;
+            }
+
+            .diagram {
+                grid-column: 1;
+            }
+
+            header {
+                padding: 0 25px;
+            }
+
+            .hero,
+            .content {
+                padding: 40px 25px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">PAINTBALL <span>EVENTS API</span></div>
+
+    <nav>
+        <a href="/sobre-api/">Início</a>
+        <a href="/modelo/">Modelo</a>
+        <a href="/making-of/">Making Of</a>
+        <a href="/api/docs">Swagger</a>
+        <a href="/admin/">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <h1>Modelo de <span>Dados</span></h1>
+    <div class="line"></div>
+
+    <p>
+        Nesta página é apresentado o modelo de dados da API Paintball Events.
+        O sistema foi construído com três entidades principais e inclui uma relação
+        1:N e uma relação N:N, conforme solicitado no enunciado.
+    </p>
+</section>
+
+<section class="content">
+    <div class="card">
+        <h2>Entidades</h2>
+        <div class="small-line"></div>
+
+        <div class="entity">
+            <h3>Event</h3>
+            <ul>
+                <li>name</li>
+                <li>date</li>
+                <li>location</li>
+                <li>price</li>
+                <li>description</li>
+            </ul>
+        </div>
+
+        <div class="entity">
+            <h3>Participant</h3>
+            <ul>
+                <li>name</li>
+                <li>email</li>
+                <li>age</li>
+                <li>event_id</li>
+            </ul>
+        </div>
+
+        <div class="entity">
+            <h3>Team</h3>
+            <ul>
+                <li>name</li>
+                <li>color</li>
+                <li>participants</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Relações</h2>
+        <div class="small-line"></div>
+
+        <div class="entity">
+            <h3>Relação 1:N</h3>
+            <p>
+                Um evento pode ter vários participantes, mas cada participante
+                está associado a apenas um evento.
+            </p>
+        </div>
+
+        <div class="entity">
+            <h3>Relação N:N</h3>
+            <p>
+                Uma equipa pode ter vários participantes e um participante pode
+                pertencer a várias equipas.
+            </p>
+        </div>
+
+        <div class="entity">
+            <h3>Resumo</h3>
+            <p>
+                Event 1:N Participant<br>
+                Participant N:N Team
+            </p>
+        </div>
+    </div>
+
+    <div class="card diagram">
+        <h2>Diagrama Entidade-Relação</h2>
+        <div class="small-line"></div>
+
+        <p>
+            Aqui pode ser apresentada a fotografia do DER realizado em papel,
+            como evidência da fase de modelação antes da implementação.
+        </p>
+
+        <div class="diagram-box">
+            <img src="{% static 'paintball/img/modelo-papel.png' %}" alt="Modelo de dados em papel">
+        </div>
+    </div>
+</section>
+
+<footer>
+    © 2026 Paintball Events API | Modelo de Dados
+</footer>
+
+</body>
+</html>

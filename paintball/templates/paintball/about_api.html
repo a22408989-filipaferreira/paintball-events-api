@@ -1,0 +1,260 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Paintball Events API</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #111827;
+        }
+
+        header {
+            height: 70px;
+            background: #111827;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 70px;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ef4444;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 35px;
+            font-weight: bold;
+        }
+
+        .hero {
+            background: white;
+            padding: 70px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hero-text {
+            max-width: 570px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            margin-bottom: 25px;
+        }
+
+        .hero h1 span {
+            color: #ef4444;
+        }
+
+        .line {
+            width: 55px;
+            height: 4px;
+            background: #ef4444;
+            margin-bottom: 30px;
+        }
+
+        .hero p {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 35px;
+        }
+
+        .buttons a {
+            display: inline-block;
+            padding: 16px 28px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        .primary {
+            background: #ef4444;
+            color: white;
+        }
+
+        .secondary {
+            border: 1px solid #cbd5e1;
+            color: #111827;
+            background: white;
+        }
+
+        .hero-image img {
+            width: 560px;
+            max-width: 100%;
+        }
+
+        .cards {
+            padding: 50px 70px 25px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+        }
+
+        .icon {
+            width: 62px;
+            height: 62px;
+            border-radius: 50%;
+            background: #fee2e2;
+            color: #ef4444;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin-bottom: 15px;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+        }
+
+        .small-line {
+            width: 45px;
+            height: 3px;
+            background: #ef4444;
+            margin: 15px 0 25px;
+        }
+
+        li {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        li::marker {
+            color: #ef4444;
+        }
+
+        .project {
+            margin: 0 70px 25px;
+            background: #fff1f1;
+            border-radius: 12px;
+            padding: 25px 35px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .project-icon {
+            font-size: 40px;
+        }
+
+        footer {
+            background: #111827;
+            color: #d1d5db;
+            text-align: center;
+            padding: 25px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">PAINTBALL <span>EVENTS API</span></div>
+
+    <nav>
+        <a href="/sobre-api/">Início</a>
+        <a href="/modelo/">Modelo</a>
+        <a href="/making-of/">Making Of</a>
+        <a href="/api/docs">Swagger</a>
+        <a href="/admin/">Admin</a>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-text">
+        <h1>Paintball Events <span>API</span></h1>
+        <div class="line"></div>
+
+        <p>
+            Esta API foi desenvolvida com Django Ninja para gerir
+            eventos de paintball, participantes e equipas.
+        </p>
+
+        <div class="buttons">
+            <a class="primary" href="/api/docs">Ver documentação Swagger</a>
+            <a class="secondary" href="/modelo/">Ver Modelo de Dados</a>
+        </div>
+    </div>
+
+    <div class="hero-image">
+        <img src="{% static 'paintball/img/mask.png' %}" alt="Paintball mask">
+    </div>
+</section>
+
+<section class="cards">
+    <div class="card">
+        <div class="icon">🗓️</div>
+        <h2>Entidades</h2>
+        <div class="small-line"></div>
+        <ul>
+            <li>Event - representa um evento de paintball</li>
+            <li>Participant - representa uma pessoa inscrita num evento</li>
+            <li>Team - representa uma equipa de participantes</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="icon">🔗</div>
+        <h2>Relações</h2>
+        <div class="small-line"></div>
+        <ul>
+            <li>Um evento pode ter vários participantes.</li>
+            <li>Uma equipa pode ter vários participantes.</li>
+            <li>Um participante pode pertencer a várias equipas.</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <div class="icon">⚙️</div>
+        <h2>Tecnologias</h2>
+        <div class="small-line"></div>
+        <ul>
+            <li>Django</li>
+            <li>Django Ninja</li>
+            <li>Swagger</li>
+        </ul>
+    </div>
+</section>
+
+<section class="project">
+    <div class="project-icon">🏆</div>
+    <div>
+        <h2>Projeto Académico</h2>
+        <p>Desenvolvido como projeto académico para a unidade curricular de Programação Web.</p>
+    </div>
+</section>
+
+<footer>
+    © 2026 Paintball Events API. Todos os direitos reservados.
+</footer>
+
+</body>
+</html>

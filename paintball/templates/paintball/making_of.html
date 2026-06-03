@@ -1,0 +1,272 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<title>Making Of - Paintball Events API</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#f4f6f8;
+color:#111827;
+}
+
+header{
+height:70px;
+background:#111827;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:0 70px;
+}
+
+.logo{
+font-size:22px;
+font-weight:bold;
+color:white;
+}
+
+.logo span{
+color:#ef4444;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:35px;
+font-weight:bold;
+}
+
+.hero{
+background:white;
+padding:70px;
+}
+
+.hero h1{
+font-size:58px;
+}
+
+.hero h1 span{
+color:#ef4444;
+}
+
+.line{
+width:60px;
+height:4px;
+background:#ef4444;
+margin:20px 0 30px;
+}
+
+.hero p{
+font-size:20px;
+max-width:800px;
+line-height:1.7;
+}
+
+.content{
+padding:50px 70px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+}
+
+.card{
+background:white;
+padding:35px;
+border-radius:12px;
+box-shadow:0 8px 25px rgba(0,0,0,.08);
+}
+
+.card h2{
+margin-bottom:15px;
+color:#111827;
+}
+
+.small-line{
+width:40px;
+height:3px;
+background:#ef4444;
+margin-bottom:20px;
+}
+
+.card p{
+line-height:1.8;
+}
+
+.image-card{
+grid-column:1/3;
+}
+
+.image-card img{
+width:100%;
+border-radius:10px;
+margin-top:20px;
+box-shadow:0 8px 25px rgba(0,0,0,.15);
+}
+
+footer{
+background:#111827;
+color:white;
+text-align:center;
+padding:25px;
+margin-top:30px;
+}
+
+@media(max-width:900px){
+
+.content{
+grid-template-columns:1fr;
+}
+
+.image-card{
+grid-column:1;
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<div class="logo">
+PAINTBALL <span>EVENTS API</span>
+</div>
+
+<nav>
+<a href="/sobre-api/">Início</a>
+<a href="/modelo/">Modelo</a>
+<a href="/making-of/">Making Of</a>
+<a href="/api/docs">Swagger</a>
+<a href="/admin/">Admin</a>
+</nav>
+
+</header>
+
+<section class="hero">
+
+<h1>Making <span>Of</span></h1>
+
+<div class="line"></div>
+
+<p>
+Nesta página é apresentado todo o processo de desenvolvimento da API RESTful Paintball Events API,
+desde a modelação inicial até à implementação final utilizando Django Ninja.
+</p>
+
+</section>
+
+<section class="content">
+
+<div class="card">
+<h2>Escolha do Tema</h2>
+<div class="small-line"></div>
+
+<p>
+O tema escolhido foi a gestão de eventos de paintball. A ideia surgiu por ser uma área interessante
+e permitir criar várias entidades relacionadas entre si, adequadas para uma API RESTful.
+</p>
+</div>
+
+<div class="card">
+<h2>DER</h2>
+<div class="small-line"></div>
+
+<p>
+Foi elaborado um Diagrama Entidade-Relação em papel antes da implementação.
+Este permitiu identificar as entidades principais e as respetivas relações.
+</p>
+</div>
+
+<div class="card">
+<h2>Models</h2>
+<div class="small-line"></div>
+
+<p>
+Foram criadas três entidades principais:
+Event, Participant e Team.
+As relações foram implementadas através de Foreign Keys e ManyToMany.
+</p>
+</div>
+
+<div class="card">
+<h2>Admin</h2>
+<div class="small-line"></div>
+
+<p>
+O Django Admin foi configurado para permitir a gestão dos dados e inserção de registos de teste.
+</p>
+</div>
+
+<div class="card">
+<h2>Schemas</h2>
+<div class="small-line"></div>
+
+<p>
+Foram utilizados Schemas do Django Ninja para validar e serializar os dados trocados pela API.
+</p>
+</div>
+
+<div class="card">
+<h2>API</h2>
+<div class="small-line"></div>
+
+<p>
+Foram implementados endpoints CRUD completos para todas as entidades.
+Também foram adicionados filtros, ordenação e paginação.
+</p>
+</div>
+
+<div class="card">
+<h2>Swagger</h2>
+<div class="small-line"></div>
+
+<p>
+A documentação automática foi gerada através do Swagger, permitindo testar todos os endpoints diretamente no browser.
+</p>
+</div>
+
+<div class="card">
+<h2>Dificuldades Encontradas</h2>
+<div class="small-line"></div>
+
+<p>
+As principais dificuldades estiveram relacionadas com a configuração inicial do Django Ninja,
+as relações entre entidades e a implementação da paginação e filtros.
+</p>
+</div>
+
+<div class="card image-card">
+
+<h2>Fotografia do DER</h2>
+
+<div class="small-line"></div>
+
+<p>
+Fotografia do modelo criado durante a fase de planeamento.
+</p>
+
+<img src="{% static 'paintball/img/modelo-papel.png' %}" alt="DER">
+
+</div>
+
+</section>
+
+<footer>
+© 2026 Paintball Events API | Making Of
+</footer>
+
+</body>
+</html>
