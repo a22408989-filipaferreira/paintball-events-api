@@ -38,12 +38,47 @@
             color: #ef4444;
         }
 
+        nav { position: relative; display: flex; align-items: center; }
+
         nav a {
             color: white;
             text-decoration: none;
             margin-left: 35px;
             font-weight: bold;
         }
+
+        .dropdown { position: relative; display: inline-block; margin-left: 35px; }
+
+        .dropdown > span {
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: #111827;
+            min-width: 180px;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            z-index: 10;
+        }
+
+        .dropdown-content a {
+            display: block;
+            margin-left: 0;
+            padding: 12px 18px;
+            color: white;
+            font-weight: normal;
+        }
+
+        .dropdown-content a:hover { background: #ef4444; }
+
+        .dropdown:hover .dropdown-content { display: block; }
 
         .hero {
             background: white;
@@ -183,7 +218,17 @@
         <a href="/sobre-api/">Início</a>
         <a href="/modelo/">Modelo</a>
         <a href="/making-of/">Making Of</a>
-        <a href="/api/docs">Swagger</a>
+
+        <div class="dropdown">
+            <span>APIs ▾</span>
+            <div class="dropdown-content">
+                <a href="/api/docs">Paintball Events</a>
+                <a href="/api/projetos/docs">Projetos</a>
+                <a href="/api/restaurante/docs">Restaurante</a>
+                <a href="/api/filmes/docs">Filmes</a>
+            </div>
+        </div>
+
         <a href="/admin/">Admin</a>
     </nav>
 </header>

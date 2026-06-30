@@ -14,7 +14,7 @@ api = NinjaAPI(title="Paintball Events API")
 
 # ---------- EVENTS ----------
 
-@api.get("/events", response=List[EventOut])
+@api.get("/events", response=List[EventOut], tags=["Events"])
 def list_events(
     request,
     search: str = "",
@@ -41,18 +41,18 @@ def list_events(
     return events[offset:offset + limit]
 
 
-@api.post("/events", response=EventOut)
+@api.post("/events", response=EventOut, tags=["Events"])
 def create_event(request, payload: EventIn):
     event = Event.objects.create(**payload.dict())
     return event
 
 
-@api.get("/events/{event_id}", response=EventOut)
+@api.get("/events/{event_id}", response=EventOut, tags=["Events"])
 def get_event(request, event_id: int):
     return get_object_or_404(Event, id=event_id)
 
 
-@api.put("/events/{event_id}", response=EventOut)
+@api.put("/events/{event_id}", response=EventOut, tags=["Events"])
 def update_event(request, event_id: int, payload: EventIn):
     event = get_object_or_404(Event, id=event_id)
 
@@ -63,7 +63,7 @@ def update_event(request, event_id: int, payload: EventIn):
     return event
 
 
-@api.delete("/events/{event_id}")
+@api.delete("/events/{event_id}", tags=["Events"])
 def delete_event(request, event_id: int):
     event = get_object_or_404(Event, id=event_id)
     event.delete()
@@ -72,7 +72,7 @@ def delete_event(request, event_id: int):
 
 # ---------- PARTICIPANTS ----------
 
-@api.get("/participants", response=List[ParticipantOut])
+@api.get("/participants", response=List[ParticipantOut], tags=["Participants"])
 def list_participants(
     request,
     search: str = "",
@@ -99,18 +99,18 @@ def list_participants(
     return participants[offset:offset + limit]
 
 
-@api.post("/participants", response=ParticipantOut)
+@api.post("/participants", response=ParticipantOut, tags=["Participants"])
 def create_participant(request, payload: ParticipantIn):
     participant = Participant.objects.create(**payload.dict())
     return participant
 
 
-@api.get("/participants/{participant_id}", response=ParticipantOut)
+@api.get("/participants/{participant_id}", response=ParticipantOut, tags=["Participants"])
 def get_participant(request, participant_id: int):
     return get_object_or_404(Participant, id=participant_id)
 
 
-@api.put("/participants/{participant_id}", response=ParticipantOut)
+@api.put("/participants/{participant_id}", response=ParticipantOut, tags=["Participants"])
 def update_participant(request, participant_id: int, payload: ParticipantIn):
     participant = get_object_or_404(Participant, id=participant_id)
 
@@ -121,7 +121,7 @@ def update_participant(request, participant_id: int, payload: ParticipantIn):
     return participant
 
 
-@api.delete("/participants/{participant_id}")
+@api.delete("/participants/{participant_id}", tags=["Participants"])
 def delete_participant(request, participant_id: int):
     participant = get_object_or_404(Participant, id=participant_id)
     participant.delete()
@@ -130,7 +130,7 @@ def delete_participant(request, participant_id: int):
 
 # ---------- TEAMS ----------
 
-@api.get("/teams", response=List[TeamOut])
+@api.get("/teams", response=List[TeamOut], tags=["Teams"])
 def list_teams(
     request,
     search: str = "",
@@ -157,7 +157,7 @@ def list_teams(
     return teams[offset:offset + limit]
 
 
-@api.post("/teams", response=TeamOut)
+@api.post("/teams", response=TeamOut, tags=["Teams"])
 def create_team(request, payload: TeamIn):
     data = payload.dict()
     participant_ids = data.pop("participant_ids", [])
@@ -168,12 +168,12 @@ def create_team(request, payload: TeamIn):
     return team
 
 
-@api.get("/teams/{team_id}", response=TeamOut)
+@api.get("/teams/{team_id}", response=TeamOut, tags=["Teams"])
 def get_team(request, team_id: int):
     return get_object_or_404(Team, id=team_id)
 
 
-@api.put("/teams/{team_id}", response=TeamOut)
+@api.put("/teams/{team_id}", response=TeamOut, tags=["Teams"])
 def update_team(request, team_id: int, payload: TeamIn):
     team = get_object_or_404(Team, id=team_id)
 
@@ -189,7 +189,7 @@ def update_team(request, team_id: int, payload: TeamIn):
     return team
 
 
-@api.delete("/teams/{team_id}")
+@api.delete("/teams/{team_id}", tags=["Teams"])
 def delete_team(request, team_id: int):
     team = get_object_or_404(Team, id=team_id)
     team.delete()
